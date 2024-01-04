@@ -1,13 +1,5 @@
 #pragma once
 
-class LifecycleDebug {
-public:
-	int x;
-
-	LifecycleDebug();
-	LifecycleDebug(LifecycleDebug& other);
-	~LifecycleDebug();
-};
 
 class User {
 public:
@@ -15,13 +7,22 @@ public:
 	int age;
 
 	User();
-	User(std::string _username, int _age);
+	User(std::string username, int age);
 
 	friend std::ostream& operator<<(std::ostream& os, const User& user)
 	{
 		os << "{username: " << user.username << ", age: " << user.age << "}";
 		return os;
 	}
+};
+
+class LifecycleDebug {
+public:
+	int x;
+
+	LifecycleDebug();
+	LifecycleDebug(const LifecycleDebug& other);
+	~LifecycleDebug();
 };
 
 

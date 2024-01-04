@@ -1,28 +1,27 @@
 #include <iostream>
 #include "classes.h"
 
-LifecycleDebug::LifecycleDebug() {
-	x = 5;
-	std::cout << "lifecycle debug created" << std::endl;
+LifecycleDebug::LifecycleDebug() : x(5) {
+	std::cout << "lifecycleDebug created: " << this << std::endl;
 }
 
-LifecycleDebug::LifecycleDebug(LifecycleDebug& other) {
-	x = other.x;
-	std::cout << "lifecycle debug copied" << std::endl;
+LifecycleDebug::LifecycleDebug(const LifecycleDebug& other) : x(other.x) {
+	std::cout << "lifecycleDebug copied: " << this << std::endl;
 }
 
 LifecycleDebug::~LifecycleDebug() {
-	std::cout << "lifecycle debug deleted" << std::endl;
+	std::cout << "lifecycleDebug deleted: " << this << std::endl;
 }
 
 
 
 
-User::User() : username(nullptr), age(-1) {
+User::User() : username(), age(-1) {
 }
 
-User::User(std::string _username, int _age) : username(_username), age(_age) {
+User::User(std::string username, int age) : username(username), age(age) {
 }
+
 
 
 
