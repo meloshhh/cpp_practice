@@ -21,9 +21,18 @@
     <ClCompile Include="classes.cpp">
       <Filter>Header Files</Filter>
     </ClCompile>
+    <ClCompile Include="structs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="classes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main_functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

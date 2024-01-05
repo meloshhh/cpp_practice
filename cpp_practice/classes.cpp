@@ -13,21 +13,10 @@ LifecycleDebug::~LifecycleDebug() {
 	std::cout << "lifecycleDebug deleted: " << this << std::endl;
 }
 
-
-
-
-User::User() : username(), age(-1) {
+User::User()
+	: username(), age(-1) {
 }
 
-User::User(std::string username, int age) : username(username), age(age) {
-}
-
-
-
-
-
-UserStruct::UserStruct(int id, std::string& username, int age) : id(id), username(username), age(age) {
-}
-
-UserStruct::UserStruct(int id, std::string&& username, int age) : id(id), username(username), age(age) {
+User::User(std::string username, int age)
+	: username(username), age(age) {
 }
