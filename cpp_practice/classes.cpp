@@ -2,15 +2,15 @@
 #include "classes.h"
 
 LifecycleDebug::LifecycleDebug() : x(5) {
-	std::cout << "lifecycleDebug created: " << this << std::endl;
+	std::cout << "LifecycleDebug created: " << this << std::endl;
 }
 
 LifecycleDebug::LifecycleDebug(const LifecycleDebug& other) : x(other.x) {
-	std::cout << "lifecycleDebug copied: " << this << std::endl;
+	std::cout << "LifecycleDebug copied: " << this << std::endl;
 }
 
 LifecycleDebug::~LifecycleDebug() {
-	std::cout << "lifecycleDebug deleted: " << this << std::endl;
+	std::cout << "LifecycleDebug deleted: " << this << std::endl;
 }
 
 User::User()

@@ -5,24 +5,23 @@
 #include <iostream>
 #include "classes.h"
 
-#define print_var(v) std::cout << #v << ": " << v << std::endl;
+#define print_var(v) std::cout << #v << ": " << v << std::endl
 
 #define print_vec(v) std::cout << #v << ": " << std::endl;\
 for (auto i : v) {\
 	std::cout << i << std::endl;\
 }\
-std::cout << std::endl;
+std::cout << std::endl
 
 #define print_map(v) std::cout << #v << ": " << std::endl;\
 for (auto i : v) {\
 	std::cout << i.first << ", " << i.second << std::endl;\
 }\
-std::cout << std::endl;
+std::cout << std::endl
 
 
-void object_ref_test(LifecycleDebug val, LifecycleDebug& ref, LifecycleDebug* p) {
+void object_ref_test(LifecycleDebug val, const LifecycleDebug& ref, LifecycleDebug const* p) {
 	// Copying is done for first parameter
-	// But there is no destructor print ???
 }
 
 void print_mem_usage() {

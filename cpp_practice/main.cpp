@@ -7,7 +7,7 @@
 #include "main_functions.h"
 
 int main() {
-	// Primitive data types
+	// Data types
 	int v_int = 0;
 	long int v_long_int = 123456;
 	float v_float = 1.0f;
@@ -20,11 +20,21 @@ int main() {
 
 	bool v_bool = true;
 
+	// Static arrays
+	char static_array[255] = "Milos";
+	static_array[3] = 'p';
+	// static_array = "Paunovic"; You cannot do this
+	print_var(static_array);
+	print_mem_usage();
+	array_ref_test(static_array, static_array);
+	print_mem_usage(); // Memory usage is higher after above function for some reason
+	print_var(static_array);
 
-
-	// Structs
-	std::string username("Melosh");
-	Player player(5, username, 700); // &
+	// String literals
+	char* string_literal = (char*)"Milos";
+	// string_literal[3] = 'p'; You cannot do this
+	string_literal = (char*)"Paunovic"; // But you can do this
+	print_var(string_literal);
 
 
 
@@ -40,27 +50,6 @@ int main() {
 	print_var(*pointer_to_int);
 
 
-	
-	// Static arrays
-	char static_array[255] = "Milos";
-	static_array[3] = 'p';
-	// static_array = "Paunovic"; You cannot do this
-	print_var(static_array);
-
-	print_mem_usage();
-	array_ref_test(static_array, static_array);
-	print_var(static_array);
-	print_mem_usage();
-
-
-
-	// String literals
-	char* string_literal = (char*)"Milos";
-	// string_literal[3] = 'p'; You cannot do this
-	string_literal = (char*)"Paunovic"; // But you can do this
-	print_var(string_literal);
-
-
 
 	// Strings
 	std::string v_string("Milos");
@@ -68,20 +57,18 @@ int main() {
 	print_var(v_string.length());
 
 
+	// Classes
+	{
+		LifecycleDebug ld;
+		object_ref_test(ld, ld, &ld);
+	}
+	
 
-	// Object lifecycle
-	LifecycleDebug ld;
-	LifecycleDebug* ld2 = new LifecycleDebug();
-	object_ref_test(ld, ld, &ld);
-	std::vector<LifecycleDebug>* lifecycle_debugs = new std::vector<LifecycleDebug>();
-	lifecycle_debugs->reserve(5);
-	lifecycle_debugs->push_back(LifecycleDebug());
-	lifecycle_debugs->push_back(ld);
-	lifecycle_debugs->push_back(*ld2);
-	// Every time you add an element to a vector, it creates a copy, therefore if you want the vector
-	// to have the only copy of the data, you can immediately dispose of the original object
-	delete lifecycle_debugs;
-	delete ld2; // Must delete the original
+
+
+	// Structs
+	std::string username("Melosh");
+	Player player(5, username, 700); // &
 
 
 
@@ -103,6 +90,19 @@ int main() {
 	vector_example.erase(vector_example.begin() + 3); // Delete index [3]
 	vector_example.clear(); // Delete all elements
 
+	// std::vector ownership
+	LifecycleDebug ld;
+	LifecycleDebug* ld2 = new LifecycleDebug();
+	std::vector<LifecycleDebug>* lifecycle_debugs = new std::vector<LifecycleDebug>();
+	lifecycle_debugs->reserve(5);
+	lifecycle_debugs->push_back(LifecycleDebug());
+	lifecycle_debugs->push_back(ld);
+	lifecycle_debugs->push_back(*ld2);
+	// Every time you add an element to a vector, it creates a copy, therefore if you want the vector
+	// to have the only copy of the data, you can immediately dispose of the original object
+	delete lifecycle_debugs;
+	delete ld2; // Must delete the original
+
 	// std::map
 	std::map<int, User> map_example{
 		{65, User("melosh", 28)}, // std::pair not needed
@@ -120,5 +120,5 @@ int main() {
 	std::unique_ptr<User> unique_ptr_example = std::make_unique<User>("melosh", 28);
 
 
-	return 0; 
+	return 0;
 }

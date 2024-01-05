@@ -7,7 +7,7 @@ public:
 	int points;
 
 	// This allows username to be an existing string
-	Player(int id, std::string& username, int points);
+	Player(int id, const std::string& username, int points);
 	// This allows username to be created inline
 	Player(int id, std::string&& username, int points);
 
