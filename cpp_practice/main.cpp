@@ -5,6 +5,7 @@
 #include "classes.h"
 #include "structs.h"
 #include "main_functions.h"
+#include "globals.h"
 
 int main() {
 	// Data types
@@ -57,13 +58,13 @@ int main() {
 	print_var(v_string.length());
 
 
+
 	// Classes
 	{
 		LifecycleDebug ld;
 		object_ref_test(ld, ld, &ld);
 	}
 	
-
 
 
 	// Structs
@@ -119,6 +120,14 @@ int main() {
 	// std::unique_ptr
 	std::unique_ptr<User> unique_ptr_example = std::make_unique<User>("melosh", 28);
 
+
+
+	// Global state
+	GlobalStateDebug state_debug1;
+	open_project_id = 6;
+	state.open_contact_id = 75;
+	GlobalStateDebug state_debug2;
+	state_debug1.PrintGlobalState();
 
 	return 0;
 }

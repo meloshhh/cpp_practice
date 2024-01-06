@@ -1,11 +1,14 @@
 #include <iostream>
 #include "classes.h"
+#include "main_functions.h"
+#include "globals.h"
 
 LifecycleDebug::LifecycleDebug() : x(5) {
 	std::cout << "LifecycleDebug created: " << this << std::endl;
 }
 
-LifecycleDebug::LifecycleDebug(const LifecycleDebug& other) : x(other.x) {
+LifecycleDebug::LifecycleDebug(const LifecycleDebug& other)
+	: x(other.x) {
 	std::cout << "LifecycleDebug copied: " << this << std::endl;
 }
 
@@ -19,4 +22,24 @@ User::User()
 
 User::User(std::string username, int age)
 	: username(username), age(age) {
+}
+
+std::ostream& operator<<(std::ostream& os, const User& user) {
+	os << "{username: " << user.username << ", age: " << user.age << "}";
+	return os;
+}
+
+GlobalStateDebug::GlobalStateDebug() {
+	print_var(open_project_id);
+	print_var(state.open_contact_id);
+}
+
+void GlobalStateDebug::PrintGlobalState() {
+	print_var(open_project_id);
+	print_var(state.open_contact_id);
+}
+
+State::State()
+	: open_contact_id(0) {
+	//
 }
