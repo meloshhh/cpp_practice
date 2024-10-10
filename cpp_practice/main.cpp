@@ -27,14 +27,14 @@ int main() {
 	// static_array = "Paunovic"; You cannot do this
 	print_var(static_array);
 	print_mem_usage();
-	array_ref_test(static_array, static_array);
-	print_mem_usage(); // Memory usage is higher after above function for some reason
+	array_ref_test(static_array, static_array); // Memory usage is higher after this call
+	print_mem_usage(); 
 	print_var(static_array);
 
 	// String literals
-	char* string_literal = (char*)"Milos";
+	const char* string_literal = "Milos";
 	// string_literal[3] = 'p'; You cannot do this
-	string_literal = (char*)"Paunovic"; // But you can do this
+	string_literal = "Paunovic"; // But you can do this
 	print_var(string_literal);
 
 
@@ -59,7 +59,7 @@ int main() {
 
 
 
-	// Classes
+	// Classes and objects
 	{
 		LifecycleDebug ld;
 		object_ref_test(ld, ld, &ld);
