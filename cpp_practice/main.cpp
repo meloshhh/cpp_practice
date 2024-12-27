@@ -56,14 +56,13 @@ int main() {
 	int* pointer_to_int = nullptr;
 	pointer_to_int = &int_val;
 	*pointer_to_int = 15;
-	print_var(*pointer_to_int);
 
 
 
 	// Strings
 	string v_string("Milos");
 	wstring v_wstring(L"Milos");
-	print_var(v_string.length());
+	print_var(v_string.length()); // Length is 5, null termination char not counted
 
 
 
@@ -77,8 +76,12 @@ int main() {
 
 	// Structs
 	string username("Melosh");
-	Player player = Player(5, username, 700);
-	Player player2(55, "Allora", 1000);
+	string username2{ "Melosh" };
+	string username3 = "Melosh";
+	string username4 = string("Melosh");
+	string username5 = { "Melosh" };
+	Player player(55, "Allora", 1000);
+	Player player2{ 5, username, 700 };
 
 
 
@@ -91,8 +94,8 @@ int main() {
 	val = vector_example.size(); // Number of actual elements
 	vector_example.resize(5, 3); // Affects size() and capacity(), second param is value to fill with
 	vector_example.reserve(10); // Affects only capacity()
-	//v_vec[8] = 8; // Exception, capacity is 10, but there is no element at index 8. Yes, even with primitives
-	//v_vec.insert(v_vec.begin() + 8, 8); // Exception, insertions must happen at the end. At this time, size is 5
+	//vector_example[8] = 8; // Exception, capacity is 10, but there is no element at index 8. Even with primitives
+	//vector_example.insert(vector_example.begin() + 8, 8); // Exception, insertions must happen at the end. At this time, size is 5
 	vector_example.insert(vector_example.end(), 666); // Inserts at the end
 	vector_example.insert(vector_example.begin() + 3, 12); // Insert at index [3]
 	print_vec(vector_example);
